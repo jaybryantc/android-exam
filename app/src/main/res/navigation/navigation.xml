@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/peopleFragment">
+
+    <fragment
+        android:id="@+id/peopleFragment"
+        android:name="xyz.jaybryantc.androidexam.people.view.PeopleFragment"
+        android:label="@string/people"
+        tools:layout="@layout/fragment_people">
+
+        <action
+            android:id="@+id/action_peopleFragment_to_personFragment"
+            app:destination="@id/personFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="xyz.jaybryantc.androidexam.person.view.PersonFragment"
+        android:label="PersonFragment"
+        tools:layout="@layout/fragment_person" />
+
+</navigation>

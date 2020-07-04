@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_heading1">40sp</dimen>
+    <dimen name="text_size_heading2">35sp</dimen>
+    <dimen name="text_size_subtitle1">25sp</dimen>
+    <dimen name="text_size_subtitle2">20sp</dimen>
+    <dimen name="text_size_bodyText1">15sp</dimen>
+    <dimen name="text_size_caption">10sp</dimen>
+</resources>
