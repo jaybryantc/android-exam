@@ -13,6 +13,10 @@
             name="caption"
             type="String" />
 
+        <variable
+            name="drawable"
+            type="Integer" />
+
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -45,11 +49,11 @@
                 app:layout_constraintVertical_bias="0.1"
                 tools:text="Loading your content" />
 
-            <View
+            <ImageView
                 android:id="@+id/view_icon"
                 android:layout_width="250dp"
                 android:layout_height="250dp"
-                android:background="@drawable/ic_loading"
+                android:src="@{drawable}"
                 android:visibility="@{!hasData}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
