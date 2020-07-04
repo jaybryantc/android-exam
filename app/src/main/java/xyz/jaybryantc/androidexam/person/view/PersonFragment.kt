@@ -4,21 +4,25 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
 import xyz.jaybryantc.androidexam.databinding.FragmentPersonBinding
 import xyz.jaybryantc.androidexam.person.adapter.DetailAdapter
 import xyz.jaybryantc.androidexam.person.contract.PersonContract
 import xyz.jaybryantc.androidexam.person.model.Detail
-import xyz.jaybryantc.androidexam.person.presenter.PersonPresenterImpl
+import javax.inject.Inject
 
-class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_person), PersonContract.PersonView {
+@AndroidEntryPoint
+class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_person),
+    PersonContract.PersonView {
 
+    @Inject
     lateinit var presenter: PersonContract.PersonPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = PersonPresenterImpl(this)
+        presenter.setView(this)
         presenter.loadDetail()
     }
 
@@ -49,5 +53,6 @@ class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_per
 
     override fun getContactPersonLabel(): String = getString(R.string.contact_person)
 
-    override fun getContactPersonPhoneNumber(): String = getString(R.string.contact_person_phone_number)
+    override fun getContactPersonPhoneNumber(): String =
+        getString(R.string.contact_person_phone_number)
 }

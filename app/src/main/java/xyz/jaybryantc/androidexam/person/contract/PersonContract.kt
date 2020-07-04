@@ -1,15 +1,11 @@
 package xyz.jaybryantc.androidexam.person.contract
 
-import xyz.jaybryantc.androidexam.base.IPresenter
-import xyz.jaybryantc.androidexam.base.IView
+import xyz.jaybryantc.androidexam.interfaces.IPresenter
+import xyz.jaybryantc.androidexam.interfaces.IView
 import xyz.jaybryantc.androidexam.person.model.Detail
 
 interface PersonContract {
-    interface PersonPresenter : IPresenter {
-        fun loadDetail()
-    }
-
-    interface PersonView : IView<PersonPresenter> {
+    interface PersonView : IView {
         fun showPersonNameAsTitle(name: String)
         fun showDetail(details: List<Detail>)
         fun getFirstNameLabel(): String
@@ -21,5 +17,9 @@ interface PersonContract {
         fun getAddressLabel(): String
         fun getContactPersonLabel(): String
         fun getContactPersonPhoneNumber(): String
+    }
+    interface PersonPresenter :
+        IPresenter<PersonView> {
+        fun loadDetail()
     }
 }

@@ -3,21 +3,23 @@ package xyz.jaybryantc.androidexam.people.view
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
 import xyz.jaybryantc.androidexam.databinding.FragmentPeopleBinding
 import xyz.jaybryantc.androidexam.people.adapter.PersonAdapter
 import xyz.jaybryantc.androidexam.people.contract.PeopleContract
-import xyz.jaybryantc.androidexam.people.presenter.PeoplePresenterImpl
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PeopleFragment : BaseFragment<FragmentPeopleBinding>(R.layout.fragment_people),
     PeopleContract.PeopleView {
 
-    lateinit var presenter: PeopleContract.PeoplePresenter
+    @Inject lateinit var presenter: PeopleContract.PeoplePresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = PeoplePresenterImpl(this)
+        presenter.setView(this)
         presenter.loadPeople()
     }
 
