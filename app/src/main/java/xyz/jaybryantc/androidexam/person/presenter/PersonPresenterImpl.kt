@@ -3,20 +3,27 @@ package xyz.jaybryantc.androidexam.person.presenter
 import xyz.jaybryantc.androidexam.person.contract.PersonContract
 import xyz.jaybryantc.androidexam.person.model.Detail
 
-class PersonPresenterImpl(private val view: PersonContract.PersonView) : PersonContract.PersonPresenter {
+class PersonPresenterImpl : PersonContract.PersonPresenter {
+
+    lateinit var personView: PersonContract.PersonView
+
     override fun loadDetail() {
-        view.showPersonNameAsTitle("Coco Martin")
+        personView.showPersonNameAsTitle("Coco Martin")
         val details = mutableListOf<Detail>(
-            Detail(view.getFirstNameLabel(), ""),
-            Detail(view.getLastNameLabel(), ""),
-            Detail(view.getBirthdayLabel(), ""),
-            Detail(view.getAgeLabel(), ""),
-            Detail(view.getEmailAddressLabel(), ""),
-            Detail(view.getMobileNumberLabel(), ""),
-            Detail(view.getAddressLabel(), ""),
-            Detail(view.getContactPersonLabel(), ""),
-            Detail(view.getContactPersonPhoneNumber(), "")
+            Detail(personView.getFirstNameLabel(), ""),
+            Detail(personView.getLastNameLabel(), ""),
+            Detail(personView.getBirthdayLabel(), ""),
+            Detail(personView.getAgeLabel(), ""),
+            Detail(personView.getEmailAddressLabel(), ""),
+            Detail(personView.getMobileNumberLabel(), ""),
+            Detail(personView.getAddressLabel(), ""),
+            Detail(personView.getContactPersonLabel(), ""),
+            Detail(personView.getContactPersonPhoneNumber(), "")
         )
-        view.showDetail(details)
+        personView.showDetail(details)
+    }
+
+    override fun setView(view: PersonContract.PersonView) {
+        personView = view
     }
 }

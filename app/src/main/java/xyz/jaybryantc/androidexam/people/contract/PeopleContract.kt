@@ -1,15 +1,16 @@
 package xyz.jaybryantc.androidexam.people.contract
 
-import xyz.jaybryantc.androidexam.base.IPresenter
-import xyz.jaybryantc.androidexam.base.IView
+import xyz.jaybryantc.androidexam.interfaces.IPresenter
+import xyz.jaybryantc.androidexam.interfaces.IView
 
 interface PeopleContract  {
-    interface PeoplePresenter: IPresenter {
-        fun loadPeople()
-    }
-    interface PeopleView : IView<PeoplePresenter> {
+    interface PeopleView : IView {
         fun showList(people: List<String>)
         fun showError()
         fun showLoading()
+    }
+    interface PeoplePresenter:
+        IPresenter<PeopleView> {
+        fun loadPeople()
     }
 }
