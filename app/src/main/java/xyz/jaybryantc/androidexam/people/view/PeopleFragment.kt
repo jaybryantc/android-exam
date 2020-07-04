@@ -7,18 +7,46 @@ import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
 import xyz.jaybryantc.androidexam.databinding.FragmentPeopleBinding
 import xyz.jaybryantc.androidexam.people.adapter.PersonAdapter
+import xyz.jaybryantc.androidexam.people.contract.PeopleContract
+import xyz.jaybryantc.androidexam.people.presenter.PeoplePresenterImpl
 
-class PeopleFragment : BaseFragment<FragmentPeopleBinding>(R.layout.fragment_people) {
+class PeopleFragment : BaseFragment<FragmentPeopleBinding>(R.layout.fragment_people),
+    PeopleContract.PeopleView {
+
+    lateinit var presenter: PeopleContract.PeoplePresenter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter = PeoplePresenterImpl(this)
+        presenter.loadPeople()
+    }
+
+    override fun showList(people: List<String>) {
         binding.apply {
+            srlRefresh.isRefreshing = false
+            hasData = true
             rvPeople.apply {
                 layoutManager = LinearLayoutManager(context)
-                adapter = PersonAdapter(emptyList())
+                adapter = PersonAdapter(people)
             }
-            hasData = true
-            caption = getString(R.string.loading)
+        }
+    }
+
+    override fun showError() {
+        binding.apply {
+            srlRefresh.isRefreshing = false
+            drawable = R.drawable.ic_error
+            hasData = false
+            caption = getString(R.string.error_no_people)
+        }
+    }
+
+    override fun showLoading() {
+        binding.apply {
             srlRefresh.isRefreshing = true
+            drawable = R.drawable.ic_loading
+            hasData = false
+            caption = getString(R.string.loading)
         }
     }
 }
