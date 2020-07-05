@@ -1,15 +1,24 @@
 package xyz.jaybryantc.androidexam.util
 
-import android.view.View
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
-@BindingAdapter("android:visibility")
-fun setVisibility(view: View, visible: Boolean) {
-    view.visibility = if (visible) View.VISIBLE else View.GONE
+fun Date.format(): String {
+    val sdf = SimpleDateFormat.getDateInstance()
+    return sdf.format(this)
 }
 
-@BindingAdapter("android:src")
-fun setImageResource(imageView: ImageView, resource: Int) {
-    imageView.setImageResource(resource)
+fun Date.getElapsedYears(): Int {
+    val date = Calendar.getInstance()
+    val today = Calendar.getInstance()
+    date.time = this
+    var elapsedYears = today.get(Calendar.YEAR) - date.get(Calendar.YEAR)
+    if ((date.get(Calendar.MONTH) > today.get(Calendar.MONTH)) ||
+        (date.get(Calendar.MONTH) == today.get(Calendar.MONTH) &&
+                date.get(Calendar.DATE) > today.get(Calendar.DATE))
+    ) {
+        elapsedYears--
+    }
+    return elapsedYears
 }

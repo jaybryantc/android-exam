@@ -22,6 +22,10 @@
         android:id="@+id/personFragment"
         android:name="xyz.jaybryantc.androidexam.person.view.PersonFragment"
         android:label="PersonFragment"
-        tools:layout="@layout/fragment_person" />
+        tools:layout="@layout/fragment_person" >
+        <argument
+            android:name="person"
+            app:argType="xyz.jaybryantc.androidexam.data.model.Person" />
+    </fragment>
 
 </navigation>

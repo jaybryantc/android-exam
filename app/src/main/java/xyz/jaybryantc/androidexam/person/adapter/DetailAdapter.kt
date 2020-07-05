@@ -9,11 +9,11 @@ import xyz.jaybryantc.androidexam.base.BaseListAdapter
 import xyz.jaybryantc.androidexam.databinding.ItemDetailBinding
 import xyz.jaybryantc.androidexam.person.model.Detail
 
-class DetailAdapter(details: List<Detail>) : BaseListAdapter<Detail, ItemDetailBinding>(details) {
+class DetailAdapter : BaseListAdapter<Detail>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): BaseItemViewHolder<Detail, ItemDetailBinding> {
+    ): BaseItemViewHolder<Detail> {
         val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ItemDetailBinding>(
             inflater,
@@ -25,10 +25,11 @@ class DetailAdapter(details: List<Detail>) : BaseListAdapter<Detail, ItemDetailB
     }
 
     inner class DetailItemViewHolder(private val binding: ItemDetailBinding) :
-        BaseItemViewHolder<Detail, ItemDetailBinding>(binding) {
-        override fun onBind(detail: Detail) {
+        BaseItemViewHolder<Detail>(binding) {
+        override fun onBind(data: Detail) {
             binding.apply {
-                tvInfoTitle.text = detail.infoTitle
+                tvInfoTitle.text = data.infoTitle
+                tvInfo.text = data.info
             }
         }
     }

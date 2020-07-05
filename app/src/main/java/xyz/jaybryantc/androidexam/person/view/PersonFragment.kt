@@ -20,10 +20,28 @@ class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_per
     @Inject
     lateinit var presenter: PersonContract.PersonPresenter
 
+    private val adapter = DetailAdapter()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         presenter.setView(this)
-        presenter.loadDetail()
+        arguments?.let {
+            val args = PersonFragmentArgs.fromBundle(it)
+            presenter.loadDetail(args.person)
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        super.onDestroy()
+    }
+
+    private fun initViews() {
+        binding.apply {
+            rvDetail.layoutManager = LinearLayoutManager(context)
+            rvDetail.adapter = this@PersonFragment.adapter
+        }
     }
 
     override fun showPersonNameAsTitle(name: String) {
@@ -31,10 +49,7 @@ class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_per
     }
 
     override fun showDetail(details: List<Detail>) {
-        binding.apply {
-            rvDetail.layoutManager = LinearLayoutManager(context)
-            rvDetail.adapter = DetailAdapter(details)
-        }
+        adapter.addItems(details)
     }
 
     override fun getFirstNameLabel(): String = getString(R.string.first_name)
