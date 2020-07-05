@@ -7,7 +7,7 @@ import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseItemViewHolder
 import xyz.jaybryantc.androidexam.base.BaseListAdapter
 import xyz.jaybryantc.androidexam.databinding.ItemDetailBinding
-import xyz.jaybryantc.androidexam.person.model.Detail
+import xyz.jaybryantc.androidexam.model.Detail
 
 class DetailAdapter : BaseListAdapter<Detail>() {
     override fun onCreateViewHolder(

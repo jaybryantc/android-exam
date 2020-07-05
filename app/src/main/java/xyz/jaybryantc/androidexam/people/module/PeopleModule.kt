@@ -5,9 +5,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.FragmentComponent
 import kotlinx.coroutines.Dispatchers
-import xyz.jaybryantc.androidexam.data.repository.PeopleRepository
 import xyz.jaybryantc.androidexam.people.contract.PeopleContract
 import xyz.jaybryantc.androidexam.people.presenter.PeoplePresenterImpl
+import xyz.jaybryantc.androidexam.repository.PeopleRepository
 
 @Module
 @InstallIn(FragmentComponent::class)

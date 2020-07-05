@@ -1,8 +1,8 @@
 package xyz.jaybryantc.androidexam.people.contract
 
-import xyz.jaybryantc.androidexam.data.model.Person
 import xyz.jaybryantc.androidexam.interfaces.IPresenter
 import xyz.jaybryantc.androidexam.interfaces.IView
+import xyz.jaybryantc.androidexam.model.Person
 
 interface PeopleContract {
     interface PeopleView : IView {

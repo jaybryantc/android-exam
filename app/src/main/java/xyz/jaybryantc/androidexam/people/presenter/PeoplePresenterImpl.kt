@@ -2,30 +2,29 @@ package xyz.jaybryantc.androidexam.people.presenter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.launch
-import xyz.jaybryantc.androidexam.data.model.Person
-import xyz.jaybryantc.androidexam.data.repository.PeopleRepository
-import xyz.jaybryantc.androidexam.data.network.ApiResult.Error
-import xyz.jaybryantc.androidexam.data.network.ApiResult.Success
-import xyz.jaybryantc.androidexam.people.contract.PeopleContract
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
+import xyz.jaybryantc.androidexam.data.network.ApiResult.Error
+import xyz.jaybryantc.androidexam.data.network.ApiResult.Success
+import xyz.jaybryantc.androidexam.model.Person
+import xyz.jaybryantc.androidexam.people.contract.PeopleContract
+import xyz.jaybryantc.androidexam.repository.PeopleRepository
 
-class PeoplePresenterImpl @Inject constructor(private val peopleRepository: PeopleRepository,
-                                              override val coroutineContext: CoroutineContext
+class PeoplePresenterImpl @Inject constructor(
+    private val peopleRepository: PeopleRepository,
+    override val coroutineContext: CoroutineContext
 ) : PeopleContract.PeoplePresenter, CoroutineScope {
     private var peopleView: PeopleContract.PeopleView? = null
 
     private var data: LiveData<List<Person>>? = null
 
     private val observer = Observer<List<Person>> {
-        peopleView?.let { view ->
+        peopleView?.run {
             when {
-                it.isNotEmpty() -> view.showList(it)
-                else -> launch {
-                    loadPeople()
-                }
+                it.isNotEmpty() -> showList(it)
+                else -> showError()
             }
         }
     }
@@ -33,9 +32,11 @@ class PeoplePresenterImpl @Inject constructor(private val peopleRepository: Peop
     override fun loadPeople(forceLoad: Boolean) {
         launch {
             data = peopleRepository.getAllPeople()
-            data?.observeForever(observer)
-            if (forceLoad) {
-              loadPeople()
+            data?.run {
+                observeForever(observer)
+                if (forceLoad || value?.isEmpty() == true) {
+                    loadPeople()
+                }
             }
         }
     }

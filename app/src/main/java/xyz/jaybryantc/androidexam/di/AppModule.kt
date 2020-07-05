@@ -6,16 +6,16 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Qualifier
+import javax.inject.Singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import xyz.jaybryantc.androidexam.BuildConfig
-import xyz.jaybryantc.androidexam.data.network.services.PeopleService
 import xyz.jaybryantc.androidexam.data.database.PeopleDatabase
-import xyz.jaybryantc.androidexam.data.database.PersonDao
-import xyz.jaybryantc.androidexam.data.repository.PeopleRepository
-import xyz.jaybryantc.androidexam.data.repository.PeopleRepositoryImpl
-import javax.inject.Qualifier
-import javax.inject.Singleton
+import xyz.jaybryantc.androidexam.data.database.dao.PersonDao
+import xyz.jaybryantc.androidexam.data.network.services.PeopleService
+import xyz.jaybryantc.androidexam.repository.PeopleRepository
+import xyz.jaybryantc.androidexam.repository.PeopleRepositoryImpl
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
