@@ -1,16 +1,16 @@
-package xyz.jaybryantc.androidexam.person.presenter
+package xyz.jaybryantc.androidexam.feature.people.presenter
 
+import xyz.jaybryantc.androidexam.feature.people.contract.DetailContract
 import xyz.jaybryantc.androidexam.model.Detail
 import xyz.jaybryantc.androidexam.model.Person
-import xyz.jaybryantc.androidexam.person.contract.PersonContract
 import xyz.jaybryantc.androidexam.util.format
 import xyz.jaybryantc.androidexam.util.getElapsedYears
 
-class PersonPresenterImpl : PersonContract.PersonPresenter {
-    private var personView: PersonContract.PersonView? = null
+class DetailPresenterImpl : DetailContract.DetailPresenter {
+    private var detailView: DetailContract.DetailView? = null
 
     override fun loadDetail(person: Person) {
-        personView?.apply {
+        detailView?.apply {
             person.run {
                 val first = firstName ?: ""
                 val last = lastName ?: ""
@@ -58,11 +58,11 @@ class PersonPresenterImpl : PersonContract.PersonPresenter {
         }
     }
 
-    override fun setView(view: PersonContract.PersonView) {
-        personView = view
+    override fun setView(view: DetailContract.DetailView) {
+        detailView = view
     }
 
     override fun onDestroy() {
-        personView = null
+        detailView = null
     }
 }

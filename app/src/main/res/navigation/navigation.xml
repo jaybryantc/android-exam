@@ -8,21 +8,21 @@
 
     <fragment
         android:id="@+id/peopleFragment"
-        android:name="xyz.jaybryantc.androidexam.people.view.PeopleFragment"
+        android:name="xyz.jaybryantc.androidexam.feature.people.view.PeopleFragment"
         android:label="@string/people"
         tools:layout="@layout/fragment_people">
 
         <action
             android:id="@+id/action_peopleFragment_to_personFragment"
-            app:destination="@id/personFragment" />
+            app:destination="@id/detailFragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/personFragment"
-        android:name="xyz.jaybryantc.androidexam.person.view.PersonFragment"
-        android:label="PersonFragment"
-        tools:layout="@layout/fragment_person" >
+        android:id="@+id/detailFragment"
+        android:name="xyz.jaybryantc.androidexam.feature.people.view.DetailFragment"
+        android:label="DetailFragment"
+        tools:layout="@layout/fragment_detail" >
         <argument
             android:name="person"
             app:argType="xyz.jaybryantc.androidexam.model.Person" />

@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.people.presenter
+package xyz.jaybryantc.androidexam.feature.people.presenter
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -8,8 +8,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import xyz.jaybryantc.androidexam.data.network.ApiResult.Error
 import xyz.jaybryantc.androidexam.data.network.ApiResult.Success
+import xyz.jaybryantc.androidexam.feature.people.contract.PeopleContract
 import xyz.jaybryantc.androidexam.model.Person
-import xyz.jaybryantc.androidexam.people.contract.PeopleContract
 import xyz.jaybryantc.androidexam.repository.PeopleRepository
 
 class PeoplePresenterImpl @Inject constructor(
