@@ -5,13 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import xyz.jaybryantc.androidexam.data.model.Person
+import xyz.jaybryantc.androidexam.data.database.dao.PersonDao
+import xyz.jaybryantc.androidexam.data.database.entity.PersonEntity
 import xyz.jaybryantc.androidexam.util.Converters
 
 const val DATABASE_VERSION = 1
 const val DATABASE_NAME: String = "people_database.db"
 
-@Database(entities = [Person::class], version = DATABASE_VERSION, exportSchema = false)
+@Database(entities = [PersonEntity::class], version = DATABASE_VERSION, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class PeopleDatabase : RoomDatabase() {
 

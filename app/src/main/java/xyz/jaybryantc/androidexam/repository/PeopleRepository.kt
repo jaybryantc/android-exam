@@ -1,10 +1,10 @@
-package xyz.jaybryantc.androidexam.data.repository
+package xyz.jaybryantc.androidexam.repository
 
 import androidx.lifecycle.LiveData
-import xyz.jaybryantc.androidexam.data.model.Person
 import xyz.jaybryantc.androidexam.data.network.ApiResult
+import xyz.jaybryantc.androidexam.model.Person
 
 interface PeopleRepository {
-    fun getAllPeople(): LiveData<List<Person>>
+    suspend fun getAllPeople(): LiveData<List<Person>>
     suspend fun loadPeople(): ApiResult<List<Person>>
 }

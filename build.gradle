@@ -8,16 +8,21 @@ buildscript {
         retrofit_version = "2.9.0"
         room_version = "2.2.5"
         coroutine_version = "1.0.0"
+        ktlint_version = "9.2.1"
     }
     repositories {
         google()
         jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$dagger_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:$ktlint_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -29,6 +34,7 @@ allprojects {
         google()
         jcenter()
     }
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
 }
 
 task clean(type: Delete) {

@@ -14,4 +14,6 @@
     <string name="address">Address</string>
     <string name="contact_person">Contact Person</string>
     <string name="contact_person_phone_number">Contact Person\'s Phone Number</string>
+
+    <string name="template_name">%s %s</string>
 </resources>

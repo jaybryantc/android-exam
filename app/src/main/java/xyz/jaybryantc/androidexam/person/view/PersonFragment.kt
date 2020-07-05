@@ -5,13 +5,13 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
 import xyz.jaybryantc.androidexam.databinding.FragmentPersonBinding
+import xyz.jaybryantc.androidexam.model.Detail
 import xyz.jaybryantc.androidexam.person.adapter.DetailAdapter
 import xyz.jaybryantc.androidexam.person.contract.PersonContract
-import xyz.jaybryantc.androidexam.person.model.Detail
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_person),
