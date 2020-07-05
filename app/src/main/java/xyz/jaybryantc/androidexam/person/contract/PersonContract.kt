@@ -1,5 +1,6 @@
 package xyz.jaybryantc.androidexam.person.contract
 
+import xyz.jaybryantc.androidexam.data.model.Person
 import xyz.jaybryantc.androidexam.interfaces.IPresenter
 import xyz.jaybryantc.androidexam.interfaces.IView
 import xyz.jaybryantc.androidexam.person.model.Detail
@@ -20,6 +21,6 @@ interface PersonContract {
     }
     interface PersonPresenter :
         IPresenter<PersonView> {
-        fun loadDetail()
+        fun loadDetail(person: Person)
     }
 }

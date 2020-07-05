@@ -3,7 +3,7 @@
     
     <string name="people">People</string>
     <string name="loading">Loading content&#8230;</string>
-    <string name="error_no_people">No humans here</string>
+    <string name="error_no_people">Unable to load people</string>
     
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>

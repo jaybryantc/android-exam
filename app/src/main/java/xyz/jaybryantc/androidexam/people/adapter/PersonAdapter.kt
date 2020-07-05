@@ -7,10 +7,11 @@ import androidx.navigation.findNavController
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseItemViewHolder
 import xyz.jaybryantc.androidexam.base.BaseListAdapter
+import xyz.jaybryantc.androidexam.data.model.Person
 import xyz.jaybryantc.androidexam.databinding.ItemPersonBinding
+import xyz.jaybryantc.androidexam.people.view.PeopleFragmentDirections
 
-class PersonAdapter(data: List<String>) :
-    BaseListAdapter<String, ItemPersonBinding>(data) {
+class PersonAdapter : BaseListAdapter<Person>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,16 +25,16 @@ class PersonAdapter(data: List<String>) :
     }
     
     inner class PersonItemViewHolder(private val binding: ItemPersonBinding) :
-        BaseItemViewHolder<String, ItemPersonBinding>(binding) {
+        BaseItemViewHolder<Person>(binding) {
 
-        override fun onBind(data: String) {
+        override fun onBind(data: Person) {
             binding.apply {
                 root.setOnClickListener {
-                    it.findNavController().navigate(R.id.action_peopleFragment_to_personFragment)
+                    it.findNavController().navigate(PeopleFragmentDirections.actionPeopleFragmentToPersonFragment(data))
                 }
-                tvName.text = "Coco Martin"
-                tvMobileNumber.text = "09122121211"
-                tvInitial.text = "C"
+                tvName.text = "${data.firstName} ${data.lastName}"
+                tvMobileNumber.text = data.mobileNumber
+                tvInitial.text = data.firstName.first().toString()
             }
         }
     }
