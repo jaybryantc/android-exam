@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.people.contract
+package xyz.jaybryantc.androidexam.feature.people.contract
 
 import xyz.jaybryantc.androidexam.interfaces.IPresenter
 import xyz.jaybryantc.androidexam.interfaces.IView

@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.people.view
+package xyz.jaybryantc.androidexam.feature.people.view
 
 import android.os.Bundle
 import android.view.View
@@ -9,9 +9,9 @@ import javax.inject.Inject
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
 import xyz.jaybryantc.androidexam.databinding.FragmentPeopleBinding
+import xyz.jaybryantc.androidexam.feature.people.adapter.PersonAdapter
+import xyz.jaybryantc.androidexam.feature.people.contract.PeopleContract
 import xyz.jaybryantc.androidexam.model.Person
-import xyz.jaybryantc.androidexam.people.adapter.PersonAdapter
-import xyz.jaybryantc.androidexam.people.contract.PeopleContract
 
 @AndroidEntryPoint
 class PeopleFragment : BaseFragment<FragmentPeopleBinding>(R.layout.fragment_people),

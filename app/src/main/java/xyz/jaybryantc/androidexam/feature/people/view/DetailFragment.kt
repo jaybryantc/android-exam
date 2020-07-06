@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.person.view
+package xyz.jaybryantc.androidexam.feature.people.view
 
 import android.os.Bundle
 import android.view.View
@@ -8,26 +8,30 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseFragment
-import xyz.jaybryantc.androidexam.databinding.FragmentPersonBinding
+import xyz.jaybryantc.androidexam.databinding.FragmentDetailBinding
+import xyz.jaybryantc.androidexam.feature.people.adapter.DetailAdapter
+import xyz.jaybryantc.androidexam.feature.people.contract.DetailContract
 import xyz.jaybryantc.androidexam.model.Detail
-import xyz.jaybryantc.androidexam.person.adapter.DetailAdapter
-import xyz.jaybryantc.androidexam.person.contract.PersonContract
 
 @AndroidEntryPoint
-class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_person),
-    PersonContract.PersonView {
+class DetailFragment : BaseFragment<FragmentDetailBinding>(R.layout.fragment_detail),
+    DetailContract.DetailView {
 
     @Inject
-    lateinit var presenter: PersonContract.PersonPresenter
+    lateinit var presenter: DetailContract.DetailPresenter
 
-    private val adapter = DetailAdapter()
+    private val adapter =
+        DetailAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
         presenter.setView(this)
         arguments?.let {
-            val args = PersonFragmentArgs.fromBundle(it)
+            val args =
+                DetailFragmentArgs.fromBundle(
+                    it
+                )
             presenter.loadDetail(args.person)
         }
     }
@@ -40,7 +44,7 @@ class PersonFragment : BaseFragment<FragmentPersonBinding>(R.layout.fragment_per
     private fun initViews() {
         binding.apply {
             rvDetail.layoutManager = LinearLayoutManager(context)
-            rvDetail.adapter = this@PersonFragment.adapter
+            rvDetail.adapter = this@DetailFragment.adapter
         }
     }
 

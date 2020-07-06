@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.people.adapter
+package xyz.jaybryantc.androidexam.feature.people.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,11 +8,10 @@ import xyz.jaybryantc.androidexam.R
 import xyz.jaybryantc.androidexam.base.BaseItemViewHolder
 import xyz.jaybryantc.androidexam.base.BaseListAdapter
 import xyz.jaybryantc.androidexam.databinding.ItemPersonBinding
+import xyz.jaybryantc.androidexam.feature.people.view.PeopleFragmentDirections
 import xyz.jaybryantc.androidexam.model.Person
-import xyz.jaybryantc.androidexam.people.view.PeopleFragmentDirections
 
 class PersonAdapter : BaseListAdapter<Person>() {
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PersonItemViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = DataBindingUtil.inflate<ItemPersonBinding>(

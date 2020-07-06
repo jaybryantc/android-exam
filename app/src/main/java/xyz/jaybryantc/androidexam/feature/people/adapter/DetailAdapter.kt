@@ -1,4 +1,4 @@
-package xyz.jaybryantc.androidexam.person.adapter
+package xyz.jaybryantc.androidexam.feature.people.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
