@@ -15,12 +15,13 @@ import xyz.jaybryantc.androidexam.repository.PeopleRepository
 @Module
 @InstallIn(FragmentComponent::class)
 object PeopleModule {
+    @FragmentScoped
     @Provides
     fun providesPeoplePresenter(peopleRepository: PeopleRepository): PeopleContract.PeoplePresenter =
         PeoplePresenterImpl(peopleRepository, Dispatchers.Main)
 
     @FragmentScoped
     @Provides
-    fun providesPersonPresenter(): DetailContract.DetailPresenter =
+    fun providesDetailPresenter(): DetailContract.DetailPresenter =
         DetailPresenterImpl()
 }
